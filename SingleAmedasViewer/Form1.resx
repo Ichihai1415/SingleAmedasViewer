@@ -117,4 +117,24 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="L_Back_text1.Text" xml:space="preserve">
+    <value>更新:                                （天気と積雪は毎時0分）
+
+気温:                           ℃ ,  湿度:                     % ,  現地気圧:                                 hPa ,  海面気圧:                                 hPa
+ 
+
+降水量:                       mm/10m ,                            mm/h ,                            mm/3h ,                            mm/24h
+
+
+風:                                                m/s ,  日照時間:                m/10m ,                  h/h ,  視程:                            km
+
+
+積雪深:                     cm ,  積雪量:                cm/h ,                cm/6h ,                     cm/12h ,                     cm/24h
+
+今日の最高気温:            ℃                 今日の最大瞬間風速:
+今日の最低気温:            ℃               ,                       m/s               ,  自動観測天気:</value>
+  </data>
+  <metadata name="T_auto.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
