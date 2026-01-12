@@ -49,12 +49,13 @@ namespace SingleAmedasViewer
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            SetTimer();
             GetAndView();
         }
 
         HttpClient client = new();
 
-        internal async void GetAndView()
+        internal async Task GetAndView()
         {
             var obsData = JSON_OBSPOINTS[CODE.ToString()];
             L_obsCode.Text = CODE.ToString();
@@ -107,9 +108,22 @@ namespace SingleAmedasViewer
 
         }
 
-        private void T_auto_Tick(object sender, EventArgs e)
+        private async void T_auto_Tick(object sender, EventArgs e)
         {
-            GetAndView();
+            SetTimer();
+            await GetAndView();
+        }
+
+        internal void SetTimer()
+        {
+            T_auto.Stop();
+            T_auto.Enabled = false;
+            var now = DateTime.Now;
+            var next_tmp = now.Minute % 10 >= 7 ? now.AddMinutes(10) : now;
+            var next = new DateTime(next_tmp.Year, next_tmp.Month, next_tmp.Day, next_tmp.Hour, (next_tmp.Minute / 10) * 10 + 7, 30);
+            T_auto.Interval = (int)(next - now).TotalMilliseconds;
+            T_auto.Enabled = true;
+            T_auto.Start();
         }
     }
 }
