@@ -486,7 +486,9 @@
             Controls.Add(L_obsInfo);
             Font = new Font("Yu Gothic UI", 12F);
             ForeColor = Color.Silver;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "Form1";
             Text = "SingleAmedasViewer";
             Load += Form1_Load;
