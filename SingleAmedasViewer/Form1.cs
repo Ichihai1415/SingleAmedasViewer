@@ -44,6 +44,7 @@ namespace SingleAmedasViewer
         }
 
         public readonly Dictionary<string, ObsPoint> JSON_OBSPOINTS;
+        //internal int CODE = 50066;//富士山
         internal int CODE = 56227;
 
 
@@ -55,7 +56,7 @@ namespace SingleAmedasViewer
 
         HttpClient client = new();
 
-        internal async Task GetAndView()
+        internal async Task GetAndView()//デバッグ時voidに
         {
             var obsData = JSON_OBSPOINTS[CODE.ToString()];
             L_obsCode.Text = CODE.ToString();
@@ -78,32 +79,44 @@ namespace SingleAmedasViewer
             var data2 = json[new DateTime(latest.Year, latest.Month, latest.Day, (latest.Hour / 3) * 3, 0, 0).ToString("yyyyMMddHHmmss")];
 
             L_updateTime.Text = latest.ToString("yyyy/MM/dd HH:mm");
-            L_temp.Text = data.Temp?[0].ToString();
+            L_temp.Text = data.Temp?[0]?.ToString("F1");
             L_humid.Text = data.Humidity?[0].ToString();
-            L_press.Text = data.Pressure?[0].ToString();
-            L_pressKaimen.Text = data.NormalPressure?[0].ToString();
-            L_rain10m.Text = data.Precipitation10m?[0].ToString();
-            L_rain1h.Text = data.Precipitation1h?[0].ToString();
-            L_rain3h.Text = data.Precipitation3h?[0].ToString();
-            L_rain24h.Text = data.Precipitation24h?[0].ToString();
+            L_press.Text = data.Pressure?[0]?.ToString("F1");
+            L_pressKaimen.Text = data.NormalPressure?[0]?.ToString("F1");
+            L_rain10m.Text = data.Precipitation10m?[0]?.ToString("F1");
+            L_rain10m.ForeColor = data.Precipitation10m?[0] == 0 ? Color.Gray : SystemColors.Control;
+            L_rain1h.Text = data.Precipitation1h?[0]?.ToString("F1");
+            L_rain1h.ForeColor = data.Precipitation1h?[0] == 0 ? Color.Gray : SystemColors.Control;
+            L_rain3h.Text = data.Precipitation3h?[0]?.ToString("F1");
+            L_rain3h.ForeColor = data.Precipitation3h?[0] == 0 ? Color.Gray : SystemColors.Control;
+            L_rain24h.Text = data.Precipitation24h?[0]?.ToString("F1");
+            L_rain24h.ForeColor = data.Precipitation24h?[0] == 0 ? Color.Gray : SystemColors.Control;
             L_windDire.Text = WindDireInt2String(data.WindDirection?[0]);
-            L_wind.Text = data.Wind?[0].ToString();
+            L_wind.Text = data.Wind?[0]?.ToString("F1");
             L_sun10m.Text = data.Sun10m?[0].ToString();
-            L_sun1h.Text = data.Sun1h?[0].ToString();
+            L_sun10m.ForeColor = data.Sun10m?[0] == 0 ? Color.Gray : SystemColors.Control;
+            L_sun1h.Text = data.Sun1h?[0]?.ToString("F1");
+            L_sun1h.ForeColor = data.Sun1h?[0] == 0 ? Color.Gray : SystemColors.Control;
             L_sitei.Text = data.Visibility != null && data.Visibility.Length > 0 && data.Visibility[0] != 0
-                ? (data.Visibility[0] / 1000.0).ToString("F2")
+                ? (data.Visibility[0] / 1000.0)?.ToString("F2")
                 : "";
+            L_sitei.ForeColor = data.Visibility?[0] == 0 ? Color.Gray : SystemColors.Control;
             L_h_snowH.Text = data2.Snow?[0].ToString();
+            L_h_snowH.ForeColor = data2.Snow?[0] == 0 ? Color.Gray : SystemColors.Control;
             L_h_snow1h.Text = data2.Snow1h?[0].ToString();
+            L_h_snow1h.ForeColor = data2.Snow1h?[0] == 0 ? Color.Gray : SystemColors.Control;
             L_h_snow6h.Text = data2.Snow6h?[0].ToString();
+            L_h_snow6h.ForeColor = data2.Snow6h?[0] == 0 ? Color.Gray : SystemColors.Control;
             L_h_snow12h.Text = data2.Snow12h?[0].ToString();
+            L_h_snow12h.ForeColor = data2.Snow12h?[0] == 0 ? Color.Gray : SystemColors.Control;
             L_h_snow24h.Text = data2.Snow24h?[0].ToString();
+            L_h_snow24h.ForeColor = data2.Snow24h?[0] == 0 ? Color.Gray : SystemColors.Control;
             L_h_weather.Text = WeatherInt2String(data2.Weather?[0]);
-            L_todayTemp.Text = data.MaxTemp?[0].ToString() + "\n" + data.MinTemp?[0].ToString();
+            L_todayTemp.Text = data.MaxTemp?[0]?.ToString("F1") + "\n" + data.MinTemp?[0]?.ToString("F1");
             L_todayTempTime.Text = "(" + Hour2JstHour(data.MaxTempTime?.Hour)?.ToString("D2") + ":" + data.MaxTempTime?.Minute?.ToString("D2") + ")\n("
                 + Hour2JstHour(data.MinTempTime?.Hour)?.ToString("D2") + ":" + data.MinTempTime?.Minute?.ToString("D2") + ")";
             L_todayWindDire.Text = WindDireInt2String(data.GustDirection?[0]);
-            L_todayWind.Text = data.Gust?[0].ToString();
+            L_todayWind.Text = data.Gust?[0]?.ToString("F1");
             L_todayWindTime.Text = "(" + Hour2JstHour(data.GustTime?.Hour)?.ToString("D2") + ":" + data.GustTime?.Minute?.ToString("D2") + ")";
 
         }
@@ -111,7 +124,7 @@ namespace SingleAmedasViewer
         private async void T_auto_Tick(object sender, EventArgs e)
         {
             SetTimer();
-            await GetAndView();
+            await GetAndView();//デバッグ時await消す
         }
 
         internal void SetTimer()

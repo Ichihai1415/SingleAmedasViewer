@@ -18,82 +18,82 @@ namespace SingleAmedasViewer
             public int? ObservationNumber { get; set; }
 
             [JsonPropertyName("pressure")]
-            public double[]? Pressure { get; set; }
+            public double?[]? Pressure { get; set; }
 
             [JsonPropertyName("normalPressure")]
-            public double[]? NormalPressure { get; set; }
+            public double?[]? NormalPressure { get; set; }
 
             [JsonPropertyName("temp")]
-            public double[]? Temp { get; set; }
+            public double?[]? Temp { get; set; }
 
             [JsonPropertyName("humidity")]
-            public int[]? Humidity { get; set; }
+            public int?[]? Humidity { get; set; }
 
             [JsonPropertyName("visibility")]
-            public double[]? Visibility { get; set; }
+            public double?[]? Visibility { get; set; }
 
             [JsonPropertyName("snow")]
-            public int[]? Snow { get; set; }
+            public int?[]? Snow { get; set; }
 
             [JsonPropertyName("weather")]
-            public int[]? Weather { get; set; }
+            public int?[]? Weather { get; set; }
 
             [JsonPropertyName("snow1h")]
-            public int[]? Snow1h { get; set; }
+            public int?[]? Snow1h { get; set; }
 
             [JsonPropertyName("snow6h")]
-            public int[]? Snow6h { get; set; }
+            public int?[]? Snow6h { get; set; }
 
             [JsonPropertyName("snow12h")]
-            public int[]? Snow12h { get; set; }
+            public int?[]? Snow12h { get; set; }
 
             [JsonPropertyName("snow24h")]
-            public int[]? Snow24h { get; set; }
+            public int?[]? Snow24h { get; set; }
 
             [JsonPropertyName("sun10m")]
-            public int[]? Sun10m { get; set; }
+            public int?[]? Sun10m { get; set; }
 
             [JsonPropertyName("sun1h")]
-            public double[]? Sun1h { get; set; }
+            public double?[]? Sun1h { get; set; }
 
             [JsonPropertyName("precipitation10m")]
-            public double[]? Precipitation10m { get; set; }
+            public double?[]? Precipitation10m { get; set; }
 
             [JsonPropertyName("precipitation1h")]
-            public double[]? Precipitation1h { get; set; }
+            public double?[]? Precipitation1h { get; set; }
 
             [JsonPropertyName("precipitation3h")]
-            public double[]? Precipitation3h { get; set; }
+            public double?[]? Precipitation3h { get; set; }
 
             [JsonPropertyName("precipitation24h")]
-            public double[]? Precipitation24h { get; set; }
+            public double?[]? Precipitation24h { get; set; }
 
             [JsonPropertyName("windDirection")]
-            public int[]? WindDirection { get; set; }
+            public int?[]? WindDirection { get; set; }
 
             [JsonPropertyName("wind")]
-            public double[]? Wind { get; set; }
+            public double?[]? Wind { get; set; }
 
             [JsonPropertyName("maxTempTime")]
             public C_Time? MaxTempTime { get; set; }
 
             [JsonPropertyName("maxTemp")]
-            public double[]? MaxTemp { get; set; }
+            public double?[]? MaxTemp { get; set; }
 
             [JsonPropertyName("minTempTime")]
             public C_Time? MinTempTime { get; set; }
 
             [JsonPropertyName("minTemp")]
-            public double[]? MinTemp { get; set; }
+            public double?[]? MinTemp { get; set; }
 
             [JsonPropertyName("gustTime")]
             public C_Time? GustTime { get; set; }
 
             [JsonPropertyName("gustDirection")]
-            public int[]? GustDirection { get; set; }
+            public int?[]? GustDirection { get; set; }
 
             [JsonPropertyName("gust")]
-            public double[]? Gust { get; set; }
+            public double?[]? Gust { get; set; }
 
             public class C_Time
             {
